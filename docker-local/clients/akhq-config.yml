@@ -1,0 +1,45 @@
+akhq:
+  server:
+    # if behind a reverse proxy, path to kafkahq with trailing slash
+    base-path: ""
+
+  # default kafka properties for each clients, available for admin / producer / consumer (optionnal)
+  clients-defaults:
+    consumer:
+      properties:
+        isolation.level: read_committed
+
+  # list of kafka cluster available for kafkahq
+  connections:
+    docker-kafka-server:
+      properties:
+        bootstrap.servers: "kafka:29092"
+
+  #        bootstrap.servers: "b-1.main.mifvu1.c4.kafka.eu-west-1.amazonaws.com:9094,b-2.main.mifvu1.c4.kafka.eu-west-1.amazonaws.com:9094,b-3.main.mifvu1.c4.kafka.eu-west-1.amazonaws.com:9094"
+  #        security.protocol: SSL
+
+  # Topic display data options (optional)
+  topic-data:
+    sort: OLDEST # default sort order (OLDEST, NEWEST) (default: OLDEST)
+    size: 50 # max record per page (default: 50)
+
+  # Auth & Roles (optional)
+  security:
+    default-roles: # Roles available for all the user even unlogged user
+      - topic/read
+      - topic/insert
+      - topic/delete
+      - topic/config/update
+      - node/read
+      - node/config/update
+      - topic/data/read
+      - topic/data/insert
+      - topic/data/delete
+      - group/read
+      - group/delete
+      - group/offsets/update
+      - registry/read
+      - registry/insert
+      - registry/update
+      - registry/delete
+      - registry/version/delete
