@@ -1,0 +1,25 @@
+[{
+  "_id": 1,
+  "type": "dog",
+  "name": "Loula",
+  "color": "brown",
+  "_lastModifiedTs": {
+    "$date": "2023-07-13T08:39:44.207Z"
+  }
+},{
+  "_id": 2,
+  "type": "cat",
+  "name": "Saggy",
+  "color": "black",
+  "_lastModifiedTs": {
+    "$date": "2023-07-13T08:39:44.207Z"
+  }
+},{
+  "_id": 3,
+  "type": "bird",
+  "name": "Fenix",
+  "color": "blue",
+  "_lastModifiedTs": {
+    "$date": "2023-07-13T08:39:44.207Z"
+  }
+}]

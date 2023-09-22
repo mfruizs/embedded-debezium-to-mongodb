@@ -1,0 +1,14 @@
+# Kafka Client
+# Access http://localhost:9000/
+akhq:
+  image: tchiotludo/akhq:latest
+  depends_on:
+    - kafka
+  network_mode: bridge
+  container_name: akhq
+  volumes:
+    - ./akhq-config.yml:/app/application.yml:ro
+  ports:
+    - "9000:8080"
+  external_links:
+    - kafka

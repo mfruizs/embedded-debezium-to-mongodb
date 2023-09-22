@@ -1,0 +1,52 @@
+## Spring application
+spring:
+  profiles:
+    active: local
+  application:
+    name: embedded-debezium-to-mongodb
+  kafka:
+    bootstrap-servers: ~
+    producer:
+      acks: all
+      compression-type: gzip
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+## change server port configuration
+server:
+  port: 8084
+
+## Actuator configuration
+management:
+  endpoint:
+    health:
+      show-details: always
+    restart:
+      enabled: true
+  endpoints:
+    web:
+      base-path: /manage
+      exposure:
+        include: "*"
+  server:
+    port: 8082
+
+## Debezium configuration
+debezium:
+  connector:
+    name: my-mongo-connector
+    connectorClass: io.debezium.connector.mongodb.MongoDbConnector
+    mongodb:
+      hosts:
+        - ~
+      user: ~
+      password: ~
+  database:
+    whitelist:
+      - "DevelopDB"
+    collection:
+      whitelist:
+        - "DevelopDB.animals"
+        - "DevelopDB.persons"
+      excludeFieldList: ~
+  kafka:
+    topicPrefix: "dev.mytopic"

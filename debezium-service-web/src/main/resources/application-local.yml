@@ -1,0 +1,32 @@
+## Spring application
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      # value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+# Logging configuration
+logging:
+  level:
+    com: DEBUG
+
+## Debezium configuration
+debezium:
+  connector:
+    name: my-mongo-connector
+    connectorClass: io.debezium.connector.mongodb.MongoDbConnector
+    mongodb:
+      hosts:
+        - "mongodb://mongo:30001/?replicaSet=my-replica-set"
+  database:
+    whitelist:
+      - "DebeziumTestDB"
+    collection:
+      whitelist:
+        - "DebeziumTestDB.animals"
+        - "DebeziumTestDB.persons"
+      excludeFieldList:
+        - "DebeziumTestDB.animals._lastModifiedTs, DebeziumTestDB.persons._lastModifiedTs"
+  kafka:
+    topicPrefix: "local.mytopic"
