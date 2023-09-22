@@ -30,7 +30,6 @@ public class MongoProperties {
 	public static class MongoDBProperties {
 
 		private List<String> hosts;
-		private boolean secured;
 		private String user;
 		private String password;
 	}
